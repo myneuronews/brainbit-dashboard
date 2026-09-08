@@ -1,0 +1,1 @@
+- [BrainBit hardware generations](brainbit-protocols.md) — only gen-1 headbands work over Web Bluetooth; BrainBit 2/Flex/Black need the local Python bridge.

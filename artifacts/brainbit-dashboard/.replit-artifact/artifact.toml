@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "BrainBit EEG Dashboard"
+description = "A Chrome web app that pairs with a BrainBit EEG headband over Web Bluetooth and shows live brain waves for the four channels (O1, O2, T3, T4), a frequency spectrum with delta/theta/alpha/beta/gamma bands, and concentration and relaxation indices. Includes a simulated-signal mode for use without the device."
+version = "1.0.0"
+id = "artifacts/brainbit-dashboard"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21933
+
+[services.development]
+run = "pnpm --filter @workspace/brainbit-dashboard run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/brainbit-dashboard", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/brainbit-dashboard/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21933"
+BASE_PATH = "/"

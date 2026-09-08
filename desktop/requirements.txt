@@ -1,0 +1,4 @@
+pyneurosdk2
+websockets
+pywebview
+pyinstaller
